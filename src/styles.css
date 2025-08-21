@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+
+/*Colors Palette*/
+
+.main-bg-color {
+    background-color: #8B5E35;
+}
+.second-bg-color {
+    background-color: #9B7E5C;
+}
+.txt-color {
+    color: #090f41;
+}
+.second-txt-color {
+    color:#9D9DAA;
+}
+.third-txt-color {
+    color: #C0C0C0;
+}
+.bg {
+    background-color: #F6F6F6;
+}
+.card-bg-color {
+    background-color: #FFF;
+}
+.review-color {
+    color: #FFC000;
+}
+.error-color {
+    color: #D00439;
+}
+.bg-footer {
+    background-color: #2E2E2E;
+}
+
+/*Typography*/
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+@layer utilities {
+    .container {
+        margin-inline: auto;
+    }
+}
+
+@layer components {
+    .btn-main-style {
+        @apply py-2.5 px-5 me-2 mb-2 text-sm font-medium text-[#8B5E35] focus:outline-none bg-transparent rounded-full border border-[#8B5E35] hover:bg-[#8B5E35] hover:text-white focus:z-10 focus:ring-4 focus:ring-[#8B5E35]
+    }
+}

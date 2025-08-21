@@ -1,0 +1,37 @@
+<section class="min-h-screen py-10">
+    <h2 class="text-center py-5 text-4xl text-[#8B5E35] font-bold">Products</h2>
+    <div class="container w-3/4">
+        <div class="products grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+            @for(product of productsList; track product.id) {
+                <div class="product-item txt-color">
+                <div class="max-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+                    <a href="#">
+                        <img class="p-2 rounded-lg object-cover w-full block" [src]="product.imageCover" [alt]="product.title" />
+                    </a>
+                    <div class="px-5 pb-5">
+                        <a href="#">
+                            <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{product.title.split(" ",3).join(" ")}}</h5>
+                        </a>
+                        <div class="flex items-center mt-2.5 mb-5">
+                            <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                                <i class="fa-solid fa-star w-4 h-4 review-color"></i>
+                            </div>
+                            <span
+                                class="font-semibold"> {{product.ratingsAverage}} </span>
+                            <span
+                                class="text-xs ms-1 third-txt-color"> (+{{product.ratingsQuantity}}) </span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-3xl font-bold text-gray-900 dark:text-white">$ {{product.price}}</span>
+                            <div class="span w-[max-content] p-2 main-bg-color text-white rounded-lg cursor-pointer">
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            }
+        </div>
+    </div>
+</section>
