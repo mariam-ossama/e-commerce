@@ -19,4 +19,13 @@ export class NavbarComponent implements OnInit{
       initFlowbite();
     });
   }
+  signUp():void {
+    this.isLoggedIn = true;
+  }
+  login():void{
+    this.isLoggedIn = true;
+  }
+  logout():void {
+    this.isLoggedIn = false;
+  }
 }

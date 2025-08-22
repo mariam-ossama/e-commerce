@@ -1,4 +1,4 @@
-<nav class="bg-white border-b-[1px] border-b-gray-300 fixed top-0 left-0 right-0 w-full">
+<nav class="bg-white border-b-[1px] border-b-gray-300 fixed top-0 left-0 right-0 w-full z-[9999]">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
     <a href="/" class="flex items-center space-x-3">
         <span class="self-center text-[#8B5E35] whitespace-nowrap text-2xl font-light">Trendify</span>
@@ -36,7 +36,7 @@
           </a>
         </li>
         <li>
-          <a class="block py-2 px-3 second-txt-color text-[16px] md:p-0 cursor-pointer" aria-current="page">
+          <a class="block py-2 px-3 second-txt-color text-[16px] md:p-0 cursor-pointer" aria-current="page" (click)="logout()">
             <i class="fa-solid fa-arrow-right-from-bracket text-gray-400 me-2"></i>
             <span>logout</span>
           </a>
@@ -46,10 +46,10 @@
       @else {
         <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-4 md:mt-0">
         <li>
-          <button type="button" class="btn-main-style">Login</button>
+          <button type="button" class="btn-main-style" (click)="login()">Login</button>
         </li>
         <li>
-          <button type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-white focus:outline-none bg-[#8B5E35] rounded-full border border-white hover:bg-transparent hover:text-[#8B5E35] hover:ring-1 hover:ring-[#8B5E35] focus:z-10 focus:ring-4 focus:ring-[#8B5E35]">Sign Up</button>
+          <button type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-white focus:outline-none bg-[#8B5E35] rounded-full border border-white hover:bg-transparent hover:text-[#8B5E35] hover:ring-1 hover:ring-[#8B5E35] focus:z-10 focus:ring-4 focus:ring-[#8B5E35]" (click)="signUp()">Sign Up</button>
         </li>
       </ul>
       }

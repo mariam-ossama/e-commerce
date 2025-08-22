@@ -76,6 +76,22 @@ export const routes: Routes = [
           ),
         title: 'Brands Page',
       },
+      {
+        path: 'details/:slug/:id',
+        loadComponent: () =>
+          import('./features/details/details.component').then(
+            (m) => m.DetailsComponent
+          ),
+        title: 'Details Page',
+      },
+      {
+        path: 'details/:id',
+        loadComponent: () =>
+          import('./features/details/details.component').then(
+            (m) => m.DetailsComponent
+          ),
+        title: 'Details Page',
+      },
     ],
   },
 
