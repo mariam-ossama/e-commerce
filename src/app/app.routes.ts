@@ -1,4 +1,7 @@
+import { Validators } from '@angular/forms';
 import { Routes } from '@angular/router';
+import { isLoggedInGuard } from './core/guards/is-logged-in-guard';
+import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -9,6 +12,7 @@ export const routes: Routes = [
       import('./core/layouts/blank-navbar/blank-navbar.component').then(
         (m) => m.BlankNavbarComponent
       ),
+    canActivate: [isLoggedInGuard],
     children: [
       {
         path: 'register',
@@ -35,6 +39,7 @@ export const routes: Routes = [
       import('./core/layouts/main-navbar/main-navbar.component').then(
         (m) => m.MainNavbarComponent
       ),
+      canActivate: [authGuard],
     children: [
       {
         path: 'home',

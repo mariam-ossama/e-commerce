@@ -51,6 +51,12 @@ body {
 
 @layer components {
     .btn-main-style {
-        @apply py-2.5 px-5 me-2 mb-2 text-sm font-medium text-[#8B5E35] focus:outline-none bg-transparent rounded-full border border-[#8B5E35] hover:bg-[#8B5E35] hover:text-white focus:z-10 focus:ring-4 focus:ring-[#8B5E35]
+        @apply py-2.5 px-5 me-2 mb-2 text-sm font-medium text-[#8B5E35] focus:outline-none bg-transparent rounded-full border border-[#8B5E35] hover:bg-[#8B5E35] hover:text-white focus:z-10 focus:ring-4 focus:ring-[#8B5E35];
+    }
+    .btn-alternate-style {
+        @apply py-2.5 px-5 me-2 mb-2 text-sm font-medium text-white focus:outline-none bg-[#8B5E35] rounded-full border border-white hover:bg-transparent hover:text-[#8B5E35] hover:ring-1 hover:ring-[#8B5E35] focus:z-10 focus:ring-4 focus:ring-[#8B5E35];
+    }
+    .input-style {
+        @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#8B5E35] focus:border-[#8B5E35] block w-full ps-10 p-2.5;
     }
 }

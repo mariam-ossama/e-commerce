@@ -1,0 +1,58 @@
+<label [for]="inputId" class="block mb-2 text-sm font-medium txt-color" [class]="{
+      'text-green-800':control?.valid,
+      'text-red-800':control?.invalid && control?.touched
+    }" >{{label}}</label>
+<div class="relative mb-6">
+  <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+    @if(inputId == 'name'){
+        <i class="fa-solid fa-user text-[#8B5E35] z-10"></i>
+    }
+    @else if (inputId == 'email') {
+        <i class="fa-solid fa-envelope text-[#8B5E35] z-10"></i>
+    }
+    @else if (inputId == 'password' || inputId == 'rePassword') {
+        <i class="fa-solid fa-key text-[#8B5E35] z-10"></i>
+    }
+    @else if (inputId == 'phone') {
+        <i class="fa-solid fa-phone text-[#8B5E35] z-10"></i>
+    }
+  </div>
+  <div class="relative">
+    <input [class]="{
+      'border-green-800':control?.valid,
+      'border-red-800':control?.invalid && control?.touched
+    }" [formControl]="control" [type]="inputType || (flag ? 'password' : 'text')" [id]="inputId" class="input-style" [placeholder]="inputPlaceholder">
+    @if(!inputType){
+        @if (flag) {
+        <i class="fa-solid fa-eye absolute -translate-y-1/2 end-4 top-5 text-[#8B5E35]" (click)="flag = !flag"></i>
+    }
+    @else {
+        <i class="fa-solid fa-eye-slash absolute -translate-y-1/2 end-4 top-5 text-[#8B5E35]" (click)="flag = !flag"></i>
+    }
+    }
+  </div>
+</div>
+@if (control?.errors && control?.touched) {
+    <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-5 bg-red-50" role="alert">
+      <ul class="mt-1.5 list-disc list-inside">
+        @if (control?.hasError('required') && control?.touched) {
+            <li>Input Field is Required</li>
+        }
+        @else if (control?.hasError('minlength')) {
+            <li>At least 3 lowercase character</li>
+        }
+        @else if (control?.hasError('maxlength')) {
+            <li>At most 20 characters</li>
+        }
+        @else if (control.hasError('email')) {
+            <li>Invalid Email Format</li>
+        }
+        @else if (control.hasError('mismatch')) {
+            <li>Passwords don't match</li>
+        }
+        @else if (control.hasError('pattern')) {
+            <ng-content></ng-content>  
+        }
+    </ul>
+</div>
+}

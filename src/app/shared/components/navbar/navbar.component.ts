@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, inject, Input, OnInit } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { FlowbiteService } from '../../../core/services/flowbite.service';
 import { initFlowbite } from 'flowbite';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from '../../../core/auth/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,6 +13,9 @@ import { initFlowbite } from 'flowbite';
 })
 export class NavbarComponent implements OnInit{
   @Input() isLoggedIn!:boolean;
+  private readonly router = inject(Router);
+  private readonly cookiesService = inject(CookieService);
+  private readonly authService = inject(AuthService);
 
   constructor(private flowbiteService: FlowbiteService) {}
 
@@ -18,14 +23,26 @@ export class NavbarComponent implements OnInit{
     this.flowbiteService.loadFlowbite((flowbite) => {
       initFlowbite();
     });
+    this.loggedIn();
   }
   signUp():void {
-    this.isLoggedIn = true;
+    // navigate to sign up page
+    this.router.navigate(['/register']);
   }
   login():void{
-    this.isLoggedIn = true;
+    // navigate to login page
+    this.router.navigate(['/login']);
+  }
+  loggedIn():void {
+    if(this.cookiesService.get('token')){
+      this.isLoggedIn = true;
+    }
+    else {
+      this.isLoggedIn = false;
+    }
   }
   logout():void {
-    this.isLoggedIn = false;
+    // navigate to login page
+    this.authService.logOut();
   }
 }
