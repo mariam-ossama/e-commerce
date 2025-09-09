@@ -12,31 +12,40 @@
     <div class="hidden md:flex grow justify-evenly items-center w-full md:w-auto" id="navbar-default">
       <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-4 md:mt-0">
         <li>
-          <a routerLink="/home" routerLinkActive="link-active" class="block py-2 px-3 second-txt-color text-[16px] md:p-0" aria-current="page">Home</a>
+          <a routerLink="/home" routerLinkActive="link-active" class="block py-2 px-3 second-txt-color text-[16px] md:p-0 hover:link-active" aria-current="page">Home</a>
         </li>
         <li>
-          <a routerLink="/products" routerLinkActive="link-active" class="block py-2 px-3 second-txt-color text-[16px] md:p-0" aria-current="page">Products</a>
+          <a routerLink="/products" routerLinkActive="link-active" class="block py-2 px-3 second-txt-color text-[16px] md:p-0 hover:link-active" aria-current="page">Products</a>
         </li>
         <li>
-          <a routerLink="/categories" routerLinkActive="link-active" class="block py-2 px-3 second-txt-color text-[16px] md:p-0" aria-current="page">Categories</a>
+          <a routerLink="/categories" routerLinkActive="link-active" class="block py-2 px-3 second-txt-color text-[16px] md:p-0 hover:text-[#8B5E35]" aria-current="page">Categories</a>
         </li>
         <li>
-          <a routerLink="/cart" routerLinkActive="link-active" class="block py-2 px-3 second-txt-color text-[16px] md:p-0" aria-current="page">Cart</a>
-        </li>
-        <li>
-          <a routerLink="/brands" routerLinkActive="link-active" class="block py-2 px-3 second-txt-color text-[16px] md:p-0" aria-current="page">Brands</a>
+          <a routerLink="/brands" routerLinkActive="link-active" class="block py-2 px-3 second-txt-color text-[16px] md:p-0 hover:text-[#8B5E35]" aria-current="page">Brands</a>
         </li>
       </ul>
       @if (isLoggedIn) {
         <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-4 md:mt-0">
         <li>
-          <a class="block py-2 px-3 second-txt-color text-[16px] md:p-0 cursor-pointer" aria-current="page">
-            <i class="fa-solid fa-user text-gray-400 me-2"></i>
-            <span>Profile</span>
+          <a routerLink="/profile" routerLinkActive="link-active" class="block py-2 px-3 second-txt-color text-[16px] md:p-0 cursor-pointer" aria-current="page">
+            <i routerLinkActive="link-active" class="fa-solid fa-user text-gray-400 me-2"></i>
+            <span routerLinkActive="link-active">Profile</span>
           </a>
         </li>
         <li>
-          <a class="block py-2 px-3 second-txt-color text-[16px] md:p-0 cursor-pointer" aria-current="page" (click)="logout()">
+          <a routerLink="/wishlist" routerLinkActive="link-active" class="block py-2 px-3 second-txt-color text-[16px] md:p-0 cursor-pointer hover:text-[#8B5E35]" aria-current="page">
+            <i routerLinkActive="link-active" class="fa-solid fa-heart text-gray-400 me-2"></i>
+            <span routerLinkActive="link-active">Wishlist</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/cart" routerLinkActive="link-active" class="block py-2 px-3 second-txt-color text-[16px] md:p-0 cursor-pointer hover:text-[#8B5E35]" aria-current="page">
+            <i routerLinkActive="link-active" class="fa-solid fa-cart-shopping text-gray-400 me-2"></i>
+            <span routerLinkActive="link-active">Cart</span>
+          </a>
+        </li>
+        <li>
+          <a class="block py-2 px-3 second-txt-color text-[16px] md:p-0 cursor-pointer focus:text-[#8B5E35]" aria-current="page" (click)="logout()">
             <i class="fa-solid fa-arrow-right-from-bracket text-gray-400 me-2"></i>
             <span>logout</span>
           </a>
@@ -49,7 +58,7 @@
           <button type="button" class="btn-main-style" (click)="login()">Login</button>
         </li>
         <li>
-          <button type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-white focus:outline-none bg-[#8B5E35] rounded-full border border-white hover:bg-transparent hover:text-[#8B5E35] hover:ring-1 hover:ring-[#8B5E35] focus:z-10 focus:ring-4 focus:ring-[#8B5E35]" (click)="signUp()">Sign Up</button>
+          <button type="button" class="btn-alternate-style" (click)="signUp()">Sign Up</button>
         </li>
       </ul>
       }

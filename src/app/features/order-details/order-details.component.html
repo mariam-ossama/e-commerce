@@ -1,0 +1,73 @@
+<section class="min-h-screen py-14 bg">
+    <h2 class="text-center py-5 text-4xl text-[#8B5E35] font-bold">Order Details</h2>
+
+    <!-- order card -->
+             <div class="bg-white rounded-2xl shadow-md p-5 border border-gray-200">
+                <div class="mb-4">
+      <!-- <h2 class="text-xl font-bold text-[#8B5E35]">
+        Order #{{ $index + 1 }}
+      </h2> -->
+      <p class="text-sm third-txt-color">
+        {{ orderDetails.createdAt | date: 'medium' }}
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-4 mb-4">
+      <div>
+        <h3 class="font-semibold text-[#9B7E5C] mb-1">Shipping Address</h3>
+        <p class="text-sm second-txt-color">
+          {{ orderDetails.shippingAddress.details }},
+          {{ orderDetails.shippingAddress.city }}
+        </p>
+        <p class="text-sm txt-color font-semibold">
+          Phone: <span class="font-normal txt-color second-txt-color">{{ orderDetails.shippingAddress.phone }}</span>
+        </p>
+      </div>
+      <div>
+        <h3 class="font-semibold text-[#9B7E5C] mb-1">Payment & Status</h3>
+        <p class="text-sm font-semibold txt-color">Method: <span class="font-normal second-txt-color">{{ orderDetails.paymentMethodType }}</span></p>
+        <p class="text-sm font-semibold txt-color">Paid: 
+          <span
+            class="font-medium"
+            [class]="orderDetails.isPaid ? 'text-green-600' : 'text-red-600'"
+          >
+            {{ orderDetails.isPaid ? 'Yes' : 'No' }}
+          </span>
+        </p>
+        <p class="text-sm font-semibold txt-color">Delivered: 
+          <span
+            class="font-medium"
+            [class]="orderDetails.isDelivered ? 'text-green-600' : 'text-yellow-600'"
+          >
+            {{ orderDetails.isDelivered ? 'Yes' : 'No' }}
+          </span>
+        </p>
+      </div>
+    </div>
+
+    <div class="space-y-3">
+      <h3 class="font-semibold txt-color">Items</h3>
+      @for (item of orderDetails.cartItems; track item._id) {
+        <div
+        class="flex items-center gap-4 border border-gray-200 shadow bg rounded-lg p-3"
+      >
+        <div class="flex-1">
+          <h4 class="text-[#8B5E35] font-medium">
+            {{ item.product.title }}
+          </h4>
+          <p class="text-sm txt-color">
+            Qty: <span class="second-txt-color">{{item.count}}</span> • Price: <span class="second-txt-color">{{item.price}}</span> EGP
+          </p>
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="mt-4 flex justify-between items-center border-t border-t-[#C0C0C0] pt-3 txt-color">
+      <p class="font-semibold">Total:</p>
+      <p class="text-lg font-bold">
+        {{ orderDetails.totalOrderPrice }} EGP
+      </p>
+    </div>
+             </div>
+</section>

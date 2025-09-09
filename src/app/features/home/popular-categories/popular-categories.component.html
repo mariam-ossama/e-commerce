@@ -1,12 +1,28 @@
-<section>
-    <owl-carousel-o [options]="popularCategoriesOptions">
-
+<section class="bg py-3">
+  <owl-carousel-o [options]="popularCategoriesOptions">
     @for (category of categoriesList; track category._id) {
       <ng-template carouselSlide [id]="category._id">
-        <img [src]="category.image" class="w-[180px] h-[180px] rounded-full" [alt]="category.name" [title]="category.name">
-        <p class="mt-4 text-center color">{{category.name}}</p>
+        <div class="flex flex-col items-center px-3">
+          <!-- square container keeps perfect circle; flex-shrink-0 prevents carousel from shrinking it -->
+          <div class="w-36 h-36 rounded-full overflow-hidden flex-shrink-0 border border-gray-200 shadow-sm">
+            <img
+              [src]="category.image"
+              [alt]="category.name"
+              [title]="category.name"
+              class="w-full h-full object-cover block"
+            />
+          </div>
+
+          <p class="mt-4 text-center color truncate w-36">{{ category.name }}</p>
+        </div>
+      </ng-template>
+    } @empty {
+      <ng-template carouselSlide>
+        <div class="flex flex-col items-center px-3">
+          <div class="w-36 h-36 rounded-full bg-gray-200 animate-pulse"></div>
+          <div class="mt-4 w-28 h-4 bg-gray-200 rounded"></div>
+        </div>
       </ng-template>
     }
-
   </owl-carousel-o>
 </section>

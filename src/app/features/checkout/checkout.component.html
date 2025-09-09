@@ -1,0 +1,43 @@
+<section class="min-h-screen py-14 bg">
+    <div class="container flex justify-center items-center">
+        <div class="card block w-3/4 p-6 m-14 bg-white border border-gray-200 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-200">
+            <h2 class="text-center txt-color font-bold text-3xl">Checkout</h2>
+    <p class="text-center  second-txt-color">please Enter checkout details</p>
+    <form [formGroup]="checkoutForm">
+      <app-input [control]="checkoutForm.get('shippingAddress')?.get('details')"
+                 [inputElement]="'textarea'"
+                 [inputId]="'details'"
+                 [inputPlaceholder]="'Enter shipping address details...'"
+                 [label]="'Details'"></app-input>
+      <app-input [control]="checkoutForm.get('shippingAddress')?.get('phone')"
+                 [inputType]="'tel'"
+                 [inputId]="'phone'"
+                 [inputPlaceholder]="'Enter your phone number...'"
+                 [label]="'Phone Number'">
+                </app-input>
+      <app-input [control]="checkoutForm.get('shippingAddress')?.get('city')"
+                 [inputType]="'text'"
+                 [inputId]="'city'"
+                 [inputPlaceholder]="'Enter your city...'"
+                 [label]="'City'">
+                </app-input>
+<div class="flex justify-evenly items-center">
+    <button type="submit" (click)="payByCash($event)" class="btn-alternate-style flex-3/4">Pay by Cash
+        <span>
+    @if(isLoading){
+      <i class="fas fa-spinner fa-spin text-gray-500"></i>
+    }
+      </span>
+    </button>
+    <button type="submit" (click)="payByVisa($event)" class="btn-main-style flex-3/4">Pay by Visa/Credit-Card
+        <span>
+    @if(isLoading){
+      <i class="fas fa-spinner fa-spin text-gray-500"></i>
+    }
+      </span>
+    </button>
+</div>
+    </form>
+        </div>
+    </div>
+</section>

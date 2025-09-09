@@ -14,4 +14,5 @@ export class InputComponent {
   @Input() inputType!:string;
   @Input() inputPlaceholder!:string;
   flag:boolean = true;
+  @Input() inputElement = 'input';
 }

@@ -19,7 +19,7 @@
     <input id="agreeToConditions" type="checkbox" value="" class="w-4 h-4 text-[#8B5E35] bg-gray-100 border-gray-300 rounded-sm focus:ring-[#8B5E35] focus:border-[#8B5E35]">
     <div class="flex justify-between items-center w-full">
         <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 third-txt-color">Remember Me</label>
-         <a href="" class="underline text-[#8B5E35]">Forgot Password?</a>
+         <a routerLink="/forgot-password" class="underline text-[#8B5E35] cursor-pointer">Forgot Password?</a>
     </div>
 </div>
 <div class="flex justify-center items-center">
@@ -49,7 +49,7 @@
 </div>
 }
     </form>
-    <p class="text-center third-txt-color">or continue with</p>
+    <!-- <p class="text-center third-txt-color">or continue with</p>
     <ul class="flex justify-center items-center text-2xl text-[#8B5E35]">
         <li>
             <i class="fa-brands fa-google"></i>
@@ -60,8 +60,8 @@
         <li>
             <i class="fa-brands fa-apple"></i>
         </li>
-    </ul>
-    <p class="text-center third-txt-color">Don't have an account? <a href="" class="underline text-[#8B5E35]">Sign Up</a></p>
+    </ul> -->
+    <p class="text-center third-txt-color">Don't have an account? <span class="cursor-pointer underline text-[#8B5E35]" (click)="navigateToRegister()">Sign Up</span></p>
         </div>
     </div>
 </section>

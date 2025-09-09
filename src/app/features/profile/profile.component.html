@@ -1,0 +1,88 @@
+<section class="min-h-screen py-14 bg">
+    <div class="">
+        <h1 class="txt-color text-center py-5 text-4xl font-bold">Personal Information</h1>
+        <p class="text-center text-2xl  second-txt-color"> {{userData.name}}</p>
+        
+<div class="tabs-container flex flex-col justify-center items-center txt-color">
+    <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+  <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
+    
+    <li class="me-2 cursor-pointer" role="presentation">
+      <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-[#8B5E35] hover:border-gray-300 dark:hover:text-gray-300"
+        id="all-orders-tab"
+        data-tabs-target="#all-orders"
+        type="button"
+        role="tab"
+        aria-controls="all-orders"
+        aria-selected="true">All Orders</button>
+    </li>
+
+    <li class="me-2 cursor-pointer" role="presentation">
+      <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-[#8B5E35] hover:border-gray-300 dark:hover:text-gray-300"
+        id="change-password-tab"
+        data-tabs-target="#change-password"
+        type="button"
+        role="tab"
+        aria-controls="change-password"
+        aria-selected="false">Change Password</button>
+    </li>
+
+    <!-- <li class="me-2" role="presentation">
+      <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-[#8B5E35] hover:border-gray-300 dark:hover:text-gray-300"
+        id="saved-addresses-tab"
+        data-tabs-target="#saved-addresses"
+        type="button"
+        role="tab"
+        aria-controls="saved-addresses"
+        aria-selected="false">Saved Addresses</button>
+    </li> -->
+  </ul>
+</div>
+
+<div id="default-tab-content" class="w-full">
+  <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+    id="all-orders"
+    role="tabpanel"
+    aria-labelledby="all-orders-tab">
+    <!--All Prev Orders-->
+    <app-all-orders></app-all-orders>
+  </div>
+
+  <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+    id="change-password"
+    role="tabpanel"
+    aria-labelledby="change-password-tab">
+    <div class="flex justify-center items-center">
+            <div class="card block w-3/4 p-6 m-2 bg-white border border-gray-200 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-200">
+            <div class="flex justify-center items-center"></div>
+            <h2 class="text-center txt-color font-bold text-3xl">Change Password</h2>
+            <p class="text-center  second-txt-color">change your password</p>
+            <form [formGroup]="changePassword" (ngSubmit)="changeUserPawword()">
+            <app-input [control]="changePassword.get('currentPassword')"
+                       [inputId]="'currentPassword'"
+                       [label]="'Current Password'"
+                       [inputPlaceholder]="'Enter your current password...'"></app-input>
+            <app-input [control]="changePassword.get('password')"
+                       [inputId]="'password'"
+                       [label]="'New Password'"
+                       [inputPlaceholder]="'Enter New password...'"></app-input>
+            <app-input [control]="changePassword.get('rePassword')"
+                       [inputId]="'rePassword'"
+                       [label]="'Re-password'"
+                       [inputPlaceholder]="'Confirm New password...'"></app-input>
+            <button class="btn-alternate-style">Submit</button>
+        </form>
+        </div>
+        </div>
+  </div>
+
+  <!-- <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+    id="saved-addresses"
+    role="tabpanel"
+    aria-labelledby="saved-addresses-tab">
+    <p class="text-center">Saved Addresses Content</p>
+  </div> -->
+</div>
+</div>  
+    </div>
+</section>

@@ -1,1 +1,38 @@
-<section class="min-h-screen"></section>
+<section class="min-h-screen py-14 bg">
+    <div class="container w-3/4 m-auto">
+        <h2 class="text-center py-5 text-4xl text-[#8B5E35] font-bold">All Brands</h2>
+        <app-search-bar [placeholder]="'Brands'" (search)="onSearchChanged($event)"></app-search-bar>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 py-3">
+            @for (brand of brands | search:'brands': searchKeyword; track brand._id) {
+            <div class="product-item second-txt-color overflow-hidden group/card">
+                <div class="max-w-full bg-white border border-[#8B5E35] rounded-lg shadow-md cursor-pointer relative">
+                    <a>
+                        <img class="p-2 rounded-lg object-cover w-full block" [src]="brand.image" [alt]="brand.name"/>
+                    </a>
+                    <div class="px-5 pb-5">
+                        <a>
+                            <h5 class="text-xl text-center font-semibold tracking-tight dark:text-white line-clamp-1">{{brand.name}}</h5>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        } @empty {
+            <div
+          role="status"
+          class="max-w-full bg-white border border-[#8B5E35] rounded-lg shadow-md animate-pulse"
+        >
+          <!-- Image placeholder -->
+          <div class="w-full h-40 bg-gray-200 rounded-t-lg"></div>
+
+          <!-- Brand name placeholder -->
+          <div class="px-5 py-4">
+            <div class="h-4 w-32 bg-gray-300 rounded mx-auto"></div>
+          </div>
+
+          <span class="sr-only">Loading...</span>
+        </div>
+        }
+        </div>
+    </div>
+</section>

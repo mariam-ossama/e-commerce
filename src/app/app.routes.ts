@@ -30,6 +30,14 @@ export const routes: Routes = [
           ),
         title: 'Login Page',
       },
+      {
+        path: 'forgot-password',
+        loadComponent: () =>
+          import('./core/auth/forgot-password/forgot-password.component').then(
+            (m) => m.ForgotPasswordComponent
+          ),
+        title: 'Forgot Password Page',
+      },
     ],
   },
 
@@ -58,6 +66,14 @@ export const routes: Routes = [
         title: 'Products Page',
       },
       {
+        path: 'wishlist',
+        loadComponent: () =>
+          import('./features/wishlist/wishlist.component').then(
+            (m) => m.WishlistComponent
+          ),
+        title: 'Wishlist Page',
+      },
+      {
         path: 'cart',
         loadComponent: () =>
           import('./features/cart/cart.component').then(
@@ -66,12 +82,52 @@ export const routes: Routes = [
         title: 'Cart Page',
       },
       {
+        path: 'profile',
+        loadComponent: () =>
+          import('./features/profile/profile.component').then(
+            (m) => m.ProfileComponent
+          ),
+        title: 'Profile Page',
+      },
+      {
+        path: 'checkout/:cid',
+        loadComponent: () =>
+          import('./features/checkout/checkout.component').then(
+            (m) => m.CheckoutComponent
+          ),
+        title: 'Checkout Page',
+      },
+      {
+        path: 'allorders',
+        loadComponent: () =>
+          import('./features/all-orders/all-orders.component').then(
+            (m) => m.AllOrdersComponent
+          ),
+        title: 'All Orders Page',
+      },
+      {
+        path: 'order-details',
+        loadComponent: () =>
+          import('./features/order-details/order-details.component').then(
+            (m) => m.OrderDetailsComponent
+          ),
+        title: 'Order Details Page',
+      },
+      {
         path: 'categories',
         loadComponent: () =>
           import('./features/categories/categories.component').then(
             (m) => m.CategoriesComponent
           ),
         title: 'Categories Page',
+      },
+      {
+        path: 'sub-categories/:id/:name',
+        loadComponent: () =>
+          import('./features/sub-categories/sub-categories.component').then(
+            (m) => m.SubCategoriesComponent
+          ),
+        title: 'Sub-Categories Page',
       },
       {
         path: 'brands',

@@ -7,28 +7,47 @@
     @if(inputId == 'name'){
         <i class="fa-solid fa-user text-[#8B5E35] z-10"></i>
     }
-    @else if (inputId == 'email') {
+    @else if (inputId === 'email') {
         <i class="fa-solid fa-envelope text-[#8B5E35] z-10"></i>
     }
-    @else if (inputId == 'password' || inputId == 'rePassword') {
+    @else if (inputId === 'password' || inputId === 'rePassword' || inputId === 'newPassword' || inputId === 'currentPassword') {
         <i class="fa-solid fa-key text-[#8B5E35] z-10"></i>
     }
-    @else if (inputId == 'phone') {
+    @else if (inputId === 'phone') {
         <i class="fa-solid fa-phone text-[#8B5E35] z-10"></i>
+    }
+    @else if (inputId === 'resetCode') {
+        <i class="fa-solid fa-lock text-[#8B5E35] z-10"></i>
+    }
+    @else if (inputId === 'details') {
+        <i class="fa-solid fa-map-location text-[#8B5E35] z-10"></i>
+    }
+    @else if (inputId === 'city') {
+        <i class="fa-solid fa-city text-[#8B5E35] z-10"></i>
     }
   </div>
   <div class="relative">
-    <input [class]="{
+    @if(inputElement === 'input'){
+        <input [class]="{
       'border-green-800':control?.valid,
       'border-red-800':control?.invalid && control?.touched
-    }" [formControl]="control" [type]="inputType || (flag ? 'password' : 'text')" [id]="inputId" class="input-style" [placeholder]="inputPlaceholder">
-    @if(!inputType){
+    }" [formControl]="control" [type]="inputType || (flag ? 'password' : 'text')"
+       [id]="inputId" class="input-style" [placeholder]="inputPlaceholder">
+       @if(!inputType){
         @if (flag) {
         <i class="fa-solid fa-eye absolute -translate-y-1/2 end-4 top-5 text-[#8B5E35]" (click)="flag = !flag"></i>
     }
     @else {
         <i class="fa-solid fa-eye-slash absolute -translate-y-1/2 end-4 top-5 text-[#8B5E35]" (click)="flag = !flag"></i>
     }
+    }
+    }
+    @else if (inputElement === 'textarea') {
+        <textarea [class]="{
+      'border-green-800':control?.valid,
+      'border-red-800':control?.invalid && control?.touched
+    }" [formControl]="control"
+       [id]="inputId" class="input-style resize-none leading-[2.3rem]" [placeholder]="inputPlaceholder"></textarea>
     }
   </div>
 </div>

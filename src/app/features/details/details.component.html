@@ -1,6 +1,7 @@
 <section class="py-14 min-h-screen">
     <div class="container w-3/4">
-  <div class="flex flex-col md:flex-row gap-10 p-6 font-sans">
+      @if (!isLoading) {
+          <div class="flex flex-col md:flex-row gap-10 p-6 font-sans">
 
   <div class="flex gap-4">
     <div class="flex flex-col gap-3">
@@ -30,14 +31,14 @@
       <label class="block mb-2 font-medium">Quantity: {{ quantity }}</label>
       <div class="flex items-center gap-4">
         <button
-          (click)="decreaseQty()"
+          (click)="updateProductQuantity(productDetails._id, quantity - 1)"
           class="w-8 h-8 border rounded-md flex items-center justify-center"
         >
           -
         </button>
         <span>{{ quantity }}</span>
         <button
-          (click)="increaseQty()"
+          (click)="updateProductQuantity(productDetails._id, quantity + 1)"
           class="w-8 h-8 border rounded-md flex items-center justify-center"
         >
           +
@@ -48,8 +49,8 @@
     <!-- Price + Add to Cart -->
     <div class="flex items-center gap-6 my-8">
       <div class="text-2xl font-bold">${{productDetails.price}}</div>
-      <button
-        class="bg-brown-600 text-white px-6 py-3 rounded-xl hover:bg-brown-700 transition"
+      <button (click)="addToCart(productDetails._id)"
+        class="btn-alternate-style"
       >
         + Add to Cart
       </button>
@@ -61,6 +62,57 @@
     </div>
   </div>
 </div>
+      }
+      @else {
+        <div class="flex flex-col md:flex-row gap-10 p-6 font-sans animate-pulse">
 
+      <!-- Left: Images -->
+      <div class="flex gap-4">
+        <!-- Thumbnail skeletons -->
+        <div class="flex flex-col gap-3">
+          <div class="w-16 h-16 bg-gray-300 rounded-md"></div>
+          <div class="w-16 h-16 bg-gray-300 rounded-md"></div>
+          <div class="w-16 h-16 bg-gray-300 rounded-md"></div>
+        </div>
+        <!-- Main image skeleton -->
+        <div class="flex-1">
+          <div class="w-[350px] h-[350px] bg-gray-300 rounded-lg shadow-md"></div>
+        </div>
+      </div>
+
+      <!-- Right: Product Info -->
+      <div class="flex-1 space-y-6">
+        <!-- Rating -->
+        <div class="h-4 w-40 bg-gray-300 rounded"></div>
+        <!-- Title -->
+        <div class="h-6 w-2/3 bg-gray-300 rounded"></div>
+        <!-- Description -->
+        <div class="space-y-2">
+          <div class="h-3 bg-gray-300 rounded w-full"></div>
+          <div class="h-3 bg-gray-300 rounded w-5/6"></div>
+          <div class="h-3 bg-gray-300 rounded w-4/6"></div>
+        </div>
+
+        <!-- Quantity -->
+        <div>
+          <div class="h-4 w-32 bg-gray-300 rounded mb-3"></div>
+          <div class="flex items-center gap-4">
+            <div class="w-8 h-8 bg-gray-300 rounded-md"></div>
+            <div class="w-6 h-6 bg-gray-200 rounded"></div>
+            <div class="w-8 h-8 bg-gray-300 rounded-md"></div>
+          </div>
+        </div>
+
+        <!-- Price + Button -->
+        <div class="flex items-center gap-6">
+          <div class="h-6 w-24 bg-gray-300 rounded"></div>
+          <div class="h-10 w-32 bg-gray-300 rounded"></div>
+        </div>
+
+        <!-- Delivery -->
+        <div class="h-4 w-48 bg-gray-200 rounded"></div>
+      </div>
+    </div>
+      }
 </div>
 </section>

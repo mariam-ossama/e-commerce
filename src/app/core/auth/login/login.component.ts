@@ -5,12 +5,12 @@ import { initFlowbite } from 'flowbite';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { InputComponent } from "../../../shared/components/input/input.component";
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, InputComponent],
+  imports: [ReactiveFormsModule, InputComponent, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -78,5 +78,8 @@ export class LoginComponent {
       // mark all touched
       // show all errors
     }
+  }
+  navigateToRegister():void {
+    this.router.navigate(['/register']);
   }
 }

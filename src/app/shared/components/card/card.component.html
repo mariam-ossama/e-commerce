@@ -1,8 +1,18 @@
 <div class="product-item txt-color overflow-hidden group/card">
-                <div class="max-w-full bg-white border border-gray-200 rounded-lg shadow-md cursor-pointer">
-                    <a>
-                        <img class="p-2 rounded-lg object-cover w-full block" [src]="product.imageCover" [alt]="product.title" [routerLink]="['/details', product.slug , product._id]"/>
+                <div class="max-w-full bg-white border border-gray-200 rounded-lg shadow-md cursor-pointer relative">
+                     @if(!imageLoaded){
+                            <div 
+        class="p-2 rounded-lg w-full h-60 bg-gray-200 animate-pulse">
+      </div>
+                        } 
+                        @if(product.imageCover){
+                            <a>
+                        <img class="p-2 rounded-lg object-cover w-full block" [src]="product.imageCover" [alt]="product.title" [routerLink]="['/details', product.slug , product._id]" (load)="onImageLoad()"/>
                     </a>
+                        }
+        <button (click)="addToFavourites(product._id)" class="absolute top-4 end-4 bg-gray-100 size-10 rounded-full p-2 flex items-center justify-center cursor-pointer">
+            <i #favourite class="fa-regular fa-heart text-2xl txt-color"></i>
+        </button>
                     <div class="px-5 pb-5">
                         <a>
                             <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white line-clamp-1" [routerLink]="['/details', product.slug , product._id]">{{product.title}}</h5>
@@ -18,7 +28,7 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-3xl font-bold text-gray-900 dark:text-white" [routerLink]="['/details', product.slug , product._id]">$ {{product.price}}</span>
-                            <div class="span w-[max-content] p-2 main-bg-color text-white rounded-lg cursor-pointer translate-x-[160%] group-hover/card:translate-x-0 transition duration-500">
+                            <div (click)="addToCart(product._id)" class="span w-[max-content] p-2 main-bg-color text-white rounded-lg cursor-pointer translate-x-[160%] group-hover/card:translate-x-0 transition duration-500">
                                 <i class="fa-solid fa-plus"></i>
                             </div>
                         </div>

@@ -11,6 +11,7 @@ import { Category } from '../../../core/models/category.interface';
 })
 export class PopularCategoriesComponent {
   private readonly categoriesService = inject(CategoriesService);
+  isLoading:boolean = false;
   categoriesList:Category[] = [];
   popularCategoriesOptions: OwlOptions = {
     loop: true,
@@ -26,11 +27,20 @@ export class PopularCategoriesComponent {
     navText: ['', ''],
     responsive: {
       0: {
-        items: 2
-      },
-      400: {
-        items: 8
-      },
+      items: 2 // Mobile (up to ~480px)
+    },
+    576: {
+      items: 3 // Small screens
+    },
+    768: {
+      items: 4 // Tablets
+    },
+    992: {
+      items: 6 // Small laptops
+    },
+    1200: {
+      items: 8 // Large desktops
+    }
     },
     nav: false
   }

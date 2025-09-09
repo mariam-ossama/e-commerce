@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { IProduct } from '../../../core/models/iproduct.interface';
 import { ProductsService } from '../../../core/services/products.service';
 import { CardComponent } from "../../../shared/components/card/card.component";
+import { WishlistService } from '../../../core/services/wishlist/wishlist.service';
 
 @Component({
   selector: 'app-popular-products',
@@ -11,10 +12,13 @@ import { CardComponent } from "../../../shared/components/card/card.component";
 })
 export class PopularProductsComponent implements OnInit{
   private readonly productService = inject(ProductsService);
+  private readonly wishlistService = inject(WishlistService);
   productsList:IProduct[] = [];
+  wishlistIds: string[] = [];
   ngOnInit():void 
   {
     this.getAllProductsData();
+    this.getWishlistIds();
   }
   getAllProductsData():void {
     this.productService.getAllProducts().subscribe({
@@ -25,5 +29,14 @@ export class PopularProductsComponent implements OnInit{
         console.log(err);
       }
     })
+  }
+  getWishlistIds():void {
+    this.wishlistService.getWishlist().subscribe({
+    next: (res) => {
+      if (res.status === 'success') {
+        this.wishlistIds = res.data.map((item: any) => item._id);
+      }
+    }
+  });
   }
 }

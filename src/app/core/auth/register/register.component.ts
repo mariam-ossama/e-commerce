@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { InputComponent } from "../../../shared/components/input/input.component
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, InputComponent],
+  imports: [ReactiveFormsModule, InputComponent, FormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -83,5 +83,8 @@ export class RegisterComponent implements OnInit{
       // mark all touched
       this.registerForm.markAllAsTouched();
     }
+  }
+   navigateToLogin():void {
+    this.router.navigate(['/login']);
   }
 }
