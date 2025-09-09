@@ -18,7 +18,7 @@ export class PaymentService {
     return this.httpClient.get(environment.baseUrl + `orders/user/${id}`);
   }
   createVisaOrder(cid:string|null, data:object):Observable<any> {
-    return this.httpClient.post(environment.baseUrl + `orders/checkout-session/${cid}?url=http://localhost:4200`,
+    return this.httpClient.post(environment.baseUrl + `orders/checkout-session/${cid}?url=${environment.frontEndUrl}`,
       data
     );
   }
