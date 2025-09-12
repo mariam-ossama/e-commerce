@@ -77,7 +77,7 @@ export class CheckoutComponent implements OnInit{
           console.log(res.session.url);
           window.open(res.session.url, '_blank');
           // navigate to user orders page
-          this.router.navigate([res.session.success_url]);
+          this.router.navigate(['/allorders']);
         }
         else {
           this.isLoading = false;
