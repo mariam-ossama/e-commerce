@@ -11,6 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { FlowbiteService } from '../../core/services/flowbite.service';
 import { initFlowbite } from 'flowbite';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -31,6 +32,7 @@ export class ProfileComponent implements OnInit{
   ordersList:Order[] = []
   changePassword!:FormGroup;
   userAddress!:FormArray;
+  subscription:Subscription = new Subscription()
 
   constructor(private flowbiteService: FlowbiteService) {}
   
@@ -76,6 +78,7 @@ export class ProfileComponent implements OnInit{
     })
   }
   changeUserPawword():void {
+    this.subscription.unsubscribe();
     if(this.changePassword.valid){
       this.authService.updateUserPassword(this.changePassword.value).subscribe({
         next: (res)=> {
@@ -89,6 +92,8 @@ export class ProfileComponent implements OnInit{
           }
         }
       });
+    } else {
+      this.changePassword.markAllAsTouched();
     }
   }
 }

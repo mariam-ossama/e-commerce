@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { PaymentService } from './services/payment.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InputComponent } from "../../shared/components/input/input.component";
-import { environment } from '../../../environments/environment';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-checkout',
@@ -19,6 +19,7 @@ export class CheckoutComponent implements OnInit{
   checkoutForm!:FormGroup;
   isLoading:boolean = false;
   cartId:string|null = '';
+  subscription:Subscription = new  Subscription();
 
   ngOnInit(): void {
     this.getCartId();
@@ -42,6 +43,7 @@ export class CheckoutComponent implements OnInit{
     })
   }
   payByCash(event:Event):void {
+    this.subscription.unsubscribe();
     if(this.checkoutForm.valid){
       event.preventDefault();
     this.isLoading = true;
@@ -62,9 +64,12 @@ export class CheckoutComponent implements OnInit{
         console.log(err);
       }
     })
+    } else {
+      this.checkoutForm.markAllAsTouched();
     }
   }
   payByVisa(event:Event):void {
+    this.subscription.unsubscribe()
     if(this.checkoutForm.valid){
       event.preventDefault()
     this.isLoading = true;
@@ -93,6 +98,8 @@ export class CheckoutComponent implements OnInit{
         this.router.navigate([err.session.cancel_url])
       }
     });
+    } else {
+      this.checkoutForm.markAllAsTouched()
     }
   }
 }

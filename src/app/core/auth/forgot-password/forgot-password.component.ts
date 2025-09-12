@@ -5,6 +5,7 @@ import { InputComponent } from "../../../shared/components/input/input.component
 import { ToastrService } from 'ngx-toastr';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-forgot-password',
@@ -21,6 +22,7 @@ export class ForgotPasswordComponent implements OnInit{
 
   isLoading:boolean = false;
   step:number = 1;
+  subscription:Subscription = new Subscription();
 
   verifyEmail!:FormGroup;
   verifyCode!:FormGroup;
@@ -44,7 +46,8 @@ export class ForgotPasswordComponent implements OnInit{
   }
 
   verifyUserEmail():void {
-    this.isLoading = true
+    this.isLoading = true;
+    this.subscription.unsubscribe();
     if(this.verifyEmail.valid){
       this.authService.verifyUserEmail(this.verifyEmail.value).subscribe({
       next: (res)=>{
@@ -59,10 +62,13 @@ export class ForgotPasswordComponent implements OnInit{
         }
       }
     });
+    } else {
+      this.verifyEmail.markAllAsTouched();
     }
   }
   verifyUserCode():void {
     this.isLoading = true;
+    this.subscription.unsubscribe();
     if(this.verifyCode.valid){
       this.authService.verifyUserResetCode(this.verifyCode.value).subscribe({
       next: (res)=>{
@@ -73,10 +79,13 @@ export class ForgotPasswordComponent implements OnInit{
         }
       }
     });
+    }else {
+      this.verifyEmail.markAllAsTouched();
     }
   }
   resetUserPassword():void {
     this.isLoading = true;
+    this.subscription.unsubscribe();
     if(this.resetPassword.valid){
       this.authService.resetUserPassword(this.resetPassword.getRawValue()).subscribe({
       next: (res)=>{
@@ -87,6 +96,9 @@ export class ForgotPasswordComponent implements OnInit{
         this.router.navigate(['/home']);
       }
     });
+    }
+    else {
+      this.verifyEmail.markAllAsTouched();
     }
   }
 }

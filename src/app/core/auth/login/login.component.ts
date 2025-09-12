@@ -75,8 +75,7 @@ export class LoginComponent {
       });
     }
     else {
-      // mark all touched
-      // show all errors
+      this.loginForm.markAllAsTouched();
     }
   }
   navigateToRegister():void {
