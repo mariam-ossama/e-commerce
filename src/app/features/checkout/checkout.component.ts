@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { PaymentService } from './services/payment.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InputComponent } from "../../shared/components/input/input.component";
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-checkout',
@@ -63,51 +64,6 @@ export class CheckoutComponent implements OnInit{
     })
     }
   }
-  /**
-   * 
-   * {
-    "status": "success",
-    "data": {
-        "taxPrice": 0,
-        "shippingPrice": 0,
-        "totalOrderPrice": 797,
-        "paymentMethodType": "cash",
-        "isPaid": false,
-        "isDelivered": false,
-        "_id": "68bdcafd7821140b58abe895",
-        "user": "68b05308fe1d0daa38d563b7",
-        "cartItems": [
-            {
-                "count": 1,
-                "_id": "68bdc70b7821140b58ab6d17",
-                "product": "6428ead5dc1175abc65ca0ad",
-                "price": 149
-            },
-            {
-                "count": 1,
-                "_id": "68bdc70e7821140b58ab6d83",
-                "product": "6428eb43dc1175abc65ca0b3",
-                "price": 149
-            },
-            {
-                "count": 1,
-                "_id": "68bdc7117821140b58ab6e0d",
-                "product": "6428e7ecdc1175abc65ca090",
-                "price": 499
-            }
-        ],
-        "shippingAddress": {
-            "details": "details",
-            "phone": "01010800921",
-            "city": "Cairo"
-        },
-        "createdAt": "2025-09-07T18:12:13.946Z",
-        "updatedAt": "2025-09-07T18:12:13.946Z",
-        "id": 61805,
-        "__v": 0
-    }
-}
-   */
   payByVisa(event:Event):void {
     if(this.checkoutForm.valid){
       event.preventDefault()
@@ -119,9 +75,9 @@ export class CheckoutComponent implements OnInit{
           this.isLoading = false;
           // navigate to stripe payment gateway
           console.log(res.session.url);
-          window.open(res.session.url, '_self');
+          window.open(res.session.url, '_blank');
           // navigate to user orders page
-          //this.router.navigate([res.session.success_url]);
+          this.router.navigate([res.session.success_url]);
         }
         else {
           this.isLoading = false;
