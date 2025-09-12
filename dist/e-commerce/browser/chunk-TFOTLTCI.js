@@ -1,1 +1,0 @@
-import{q as n}from"./chunk-XP42DWIM.js";import{S as i,W as e,va as a}from"./chunk-U2DWYZVE.js";var c=class t{constructor(o){this.platformId=o}loadFlowbite(o){n(this.platformId)&&import("./chunk-G6Y7MWAW.js").then(r=>{o(r)})}static \u0275fac=function(r){return new(r||t)(e(a))};static \u0275prov=i({token:t,factory:t.\u0275fac,providedIn:"root"})};export{c as a};
