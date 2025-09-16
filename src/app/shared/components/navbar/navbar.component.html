@@ -39,8 +39,9 @@
           </a>
         </li>
         <li>
-          <a routerLink="/cart" routerLinkActive="link-active" class="block py-2 px-3 second-txt-color text-[16px] md:p-0 cursor-pointer hover:text-[#8B5E35]" aria-current="page">
+          <a routerLink="/cart" routerLinkActive="link-active" class="block relative py-2 px-3 second-txt-color text-[16px] md:p-0 cursor-pointer hover:text-[#8B5E35]" aria-current="page">
             <i routerLinkActive="link-active" class="fa-solid fa-cart-shopping text-gray-400 me-2"></i>
+            <div class="absolute bottom-3 start-3 z-10 p-[1px] size-5 text-[10px] txt-color border-transparent rounded-full flex items-center justify-center second-bg-color"><span class="text-white"> {{count}} </span></div>
             <span routerLinkActive="link-active">Cart</span>
           </a>
         </li>

@@ -43,6 +43,9 @@ export class CardComponent implements AfterViewInit, OnChanges{
         console.log(res.data);
         if(res.status === 'success'){
           this.toastrService.success(res.message);
+          this.cartService.countNumber.next(res.numOfCartItems);
+          //console.log(res.numOfCartItems);
+          //console.log(res);
         }
       }
     })

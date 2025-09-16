@@ -4,6 +4,7 @@ import { FlowbiteService } from '../../../core/services/flowbite.service';
 import { initFlowbite } from 'flowbite';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from '../../../core/auth/services/auth.service';
+import { CartService } from '../../../core/services/cart/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,14 +17,28 @@ export class NavbarComponent implements OnInit{
   private readonly router = inject(Router);
   private readonly cookiesService = inject(CookieService);
   private readonly authService = inject(AuthService);
+  private readonly cartService = inject(CartService);
+
+
+  count:number = 0;
 
   constructor(private flowbiteService: FlowbiteService) {}
 
   ngOnInit(): void {
+    this.getCartItemsCount()
     this.flowbiteService.loadFlowbite((flowbite) => {
       initFlowbite();
     });
     this.loggedIn();
+  }
+  getCartItemsCount():void {
+    this.cartService.countNumber.subscribe({
+      next:(res)=>{
+        console.log(res);
+        this.count = res;
+        console.log(this.count);
+      }
+    })
   }
   signUp():void {
     // navigate to sign up page

@@ -3,10 +3,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Brand } from './models/brand.interface';
 import { SearchBarComponent } from "../../shared/components/search-bar/search-bar.component";
 import { SearchPipe } from '../../shared/pipes/search/search-pipe';
+import { Highlight } from "../../shared/directives/highlight";
 
 @Component({
   selector: 'app-brands',
-  imports: [SearchBarComponent, SearchPipe],
+  imports: [SearchBarComponent, SearchPipe, Highlight],
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.css'
 })

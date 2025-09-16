@@ -2,10 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { SubCategoriesService } from '../../core/services/sub-categories/sub-categories.service';
 import { ActivatedRoute } from '@angular/router';
 import { SubCategory } from '../../core/models/sub-category.interface';
+import { Highlight } from "../../shared/directives/highlight";
 
 @Component({
   selector: 'app-sub-categories',
-  imports: [],
+  imports: [Highlight],
   templateUrl: './sub-categories.component.html',
   styleUrl: './sub-categories.component.css'
 })

@@ -29,6 +29,7 @@ export class CartComponent implements OnInit{
           this.cart = res.data;
           this.cartItemsCount = res.numOfCartItems;
           this.isLoading = false;
+          this.cartService.countNumber.next(res.numOfCartItems);
         }
       }
     })
@@ -54,6 +55,7 @@ export class CartComponent implements OnInit{
         if(res.status === 'success'){
           this.cart = res.data;
           this.cartItemsCount = res.numOfCartItems
+          this.cartService.countNumber.next(res.numOfCartItems);
         }
       }
     })
@@ -66,6 +68,7 @@ export class CartComponent implements OnInit{
         if(res.message === 'success') {
           this.toastrService.success(res.message);
           this.isLoading = false;
+          this.cartService.countNumber.next(res.numOfCartItems);
         }
       }
     })

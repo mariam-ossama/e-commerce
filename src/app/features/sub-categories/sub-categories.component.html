@@ -1,6 +1,6 @@
 <section class="min-h-screen py-14 bg">
     <div class="container w-3/4 m-auto">
-        <h1 class="text-center py-5 text-4xl text-[#8B5E35] font-bold">Sub-Categories of {{categoryName}}</h1>
+        <h1 appHighlight class="text-center py-5 text-4xl text-[#8B5E35] font-bold">Sub-Categories of {{categoryName}}</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 my-5">
         @for (subCategory of subCategoriesList; track subCategory._id) {
             <div class="subCategory-item second-txt-color overflow-hidden group/card">

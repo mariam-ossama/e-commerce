@@ -4,10 +4,11 @@ import { IProduct } from '../../core/models/iproduct.interface';
 import { NgxPaginationModule } from "ngx-pagination";
 import { CardComponent } from "../../shared/components/card/card.component";
 import { ToastrService } from 'ngx-toastr';
+import { Highlight } from "../../shared/directives/highlight";
 
 @Component({
   selector: 'app-wishlist',
-  imports: [NgxPaginationModule, CardComponent],
+  imports: [NgxPaginationModule, CardComponent, Highlight],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.css'
 })

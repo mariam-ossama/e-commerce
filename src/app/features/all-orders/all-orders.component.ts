@@ -5,10 +5,11 @@ import { AuthService } from '../../core/auth/services/auth.service';
 import { UserToken } from '../../core/models/user-token.interface';
 import { DatePipe } from '@angular/common';
 import { EmptyComponent } from "../../shared/components/empty/empty.component";
+import { Highlight } from "../../shared/directives/highlight";
 
 @Component({
   selector: 'app-all-orders',
-  imports: [DatePipe, EmptyComponent],
+  imports: [DatePipe, EmptyComponent, Highlight],
   templateUrl: './all-orders.component.html',
   styleUrl: './all-orders.component.css'
 })

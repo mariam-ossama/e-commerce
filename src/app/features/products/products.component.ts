@@ -7,10 +7,11 @@ import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 import { ToastrService } from 'ngx-toastr';
 import { SearchBarComponent } from "../../shared/components/search-bar/search-bar.component";
 import { SearchPipe } from '../../shared/pipes/search/search-pipe';
+import { Highlight } from "../../shared/directives/highlight";
 
 @Component({
   selector: 'app-products',
-  imports: [CardComponent, NgxPaginationModule, SearchBarComponent, SearchPipe],
+  imports: [CardComponent, NgxPaginationModule, SearchBarComponent, SearchPipe, Highlight],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })

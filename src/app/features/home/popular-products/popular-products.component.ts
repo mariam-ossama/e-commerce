@@ -3,10 +3,11 @@ import { IProduct } from '../../../core/models/iproduct.interface';
 import { ProductsService } from '../../../core/services/products.service';
 import { CardComponent } from "../../../shared/components/card/card.component";
 import { WishlistService } from '../../../core/services/wishlist/wishlist.service';
+import { Highlight } from "../../../shared/directives/highlight";
 
 @Component({
   selector: 'app-popular-products',
-  imports: [CardComponent],
+  imports: [CardComponent, Highlight],
   templateUrl: './popular-products.component.html',
   styleUrl: './popular-products.component.css'
 })

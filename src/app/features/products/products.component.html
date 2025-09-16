@@ -1,5 +1,5 @@
 <section class="min-h-screen py-14 bg">
-    <h2 class="text-center py-5 text-4xl text-[#8B5E35] font-bold">Products</h2>
+    <h2 appHighlight class="text-center py-5 text-4xl text-[#8B5E35] font-bold">Products</h2>
     <div class="container w-3/4">
         <app-search-bar [placeholder]="'Products'" (search)="onSearchChanged($event)"></app-search-bar>
         <div class="products grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 py-3">
