@@ -27,7 +27,7 @@
                                 class="text-xs ms-1 third-txt-color"> (+{{product.ratingsQuantity}}) </span>
                         </div>
                         <div class="flex items-center justify-between">
-                            <span class="text-3xl font-bold text-gray-900 dark:text-white" [routerLink]="['/details', product.slug , product._id]">$ {{product.price}}</span>
+                            <span class="text-3xl font-bold text-gray-900 dark:text-white" [routerLink]="['/details', product.slug , product._id]">{{product.price |currency:"GBP"}}</span>
                             <div (click)="addToCart(product._id)" class="span w-[max-content] p-2 main-bg-color text-white rounded-lg cursor-pointer translate-x-[160%] group-hover/card:translate-x-0 transition duration-500">
                                 <i class="fa-solid fa-plus"></i>
                             </div>

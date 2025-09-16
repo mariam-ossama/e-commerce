@@ -4,10 +4,11 @@ import { Order } from './models/order.interface';
 import { AuthService } from '../../core/auth/services/auth.service';
 import { UserToken } from '../../core/models/user-token.interface';
 import { DatePipe } from '@angular/common';
+import { EmptyComponent } from "../../shared/components/empty/empty.component";
 
 @Component({
   selector: 'app-all-orders',
-  imports: [DatePipe],
+  imports: [DatePipe, EmptyComponent],
   templateUrl: './all-orders.component.html',
   styleUrl: './all-orders.component.css'
 })
@@ -16,6 +17,7 @@ export class AllOrdersComponent implements OnInit{
   private readonly authService = inject(AuthService);
   ordersList:Order[] = [];
   user:UserToken = {} as UserToken;
+  isLoading:boolean = false;
 
   ngOnInit(): void {
     this.getCurrentUser();
@@ -29,10 +31,12 @@ export class AllOrdersComponent implements OnInit{
 
 
   getAllUserOrders():void {
+    this.isLoading = true;
     this.paymentService.getUserOrders(this.user.id).subscribe({
       next: (res)=> {
         console.log(res);
         this.ordersList = res;
+        this.isLoading = false;
       }
     })
   }

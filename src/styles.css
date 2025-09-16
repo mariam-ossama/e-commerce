@@ -14,7 +14,7 @@
     background-color: #9B7E5C;
 }
 .txt-color {
-    color: #090f41;
+    color: #090f41 !important;
 }
 .second-txt-color {
     color:#9D9DAA;

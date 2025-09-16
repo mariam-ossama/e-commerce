@@ -4,10 +4,11 @@ import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from '../../../core/services/cart/cart.service';
 import { WishlistService } from '../../../core/services/wishlist/wishlist.service';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-card',
-  imports: [RouterLink],
+  imports: [RouterLink, CurrencyPipe],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })

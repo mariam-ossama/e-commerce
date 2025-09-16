@@ -8,7 +8,8 @@
                 <span class="text-[#8B5E35]">{{cartItemsCount}} items</span>
                 </div>
                 <!--? Cart item-->
-                @for (cartItem of cart.products; track cartItem._id) {
+                @if (!isLoading) {
+                  @for (cartItem of cart.products; track cartItem._id) {
                     <div class="grid sm:grid-cols-12 bg-white border border-transparent rounded-md p-2 gap-2">
                     <div class="col-span-2">
                         <img [src]="cartItem.product.imageCover" class="w-full block rounded-md"  [alt]="cartItem.product.title">
@@ -29,8 +30,14 @@
                     </div>
                 </div>
                 <hr class="my-3 third-txt-color">
-                } @empty {
-                    <div
+                }@empty {
+                    <!--Empty block-->
+                    <app-empty
+                    title="Your Cart is Empty"
+    description="You haven't added any item yet in the cart."></app-empty>
+                }
+                } @else {
+                  <div
             class="grid sm:grid-cols-12 bg-white border border-transparent rounded-md p-2 gap-2 animate-pulse"
           >
             <!-- Image placeholder -->
