@@ -40,12 +40,9 @@ export class CardComponent implements AfterViewInit, OnChanges{
   addToCart(pid:string):void{
     this.cartService.addProductToCart(pid).subscribe({
       next: (res)=> {
-        console.log(res.data);
         if(res.status === 'success'){
           this.toastrService.success(res.message);
           this.cartService.countNumber.next(res.numOfCartItems);
-          //console.log(res.numOfCartItems);
-          //console.log(res);
         }
       }
     })
@@ -71,7 +68,6 @@ export class CardComponent implements AfterViewInit, OnChanges{
       // call addToWishlist API
       this.wishlistService.addToWishlist(pid).subscribe({
         next: (res)=>{
-          console.log(res);
           if(res.status === 'success'){
           // show success message
           this.toastrService.success(res.message);
@@ -86,7 +82,6 @@ export class CardComponent implements AfterViewInit, OnChanges{
       // call removeFromWishlist API
       this.wishlistService.removeFromWishlist(pid).subscribe({
         next: (res)=>{
-          console.log(res);
           if(res.status === 'success'){
           // show success message
           // update the heart icon
@@ -97,12 +92,4 @@ export class CardComponent implements AfterViewInit, OnChanges{
       })
     }
   }
-  //! we need to show favourite products only by giving them the flag
-  // getUserWishlist():void {
-  //   this.wishlistService.getWishlist().subscribe({
-  //     next: (res)=> {
-  //       console.log(res);
-  //     }
-  //   })
-  // }
 }

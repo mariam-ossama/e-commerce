@@ -35,7 +35,6 @@ export class SubCategoriesComponent implements OnInit{
   getSubCategoriesData():void {
     this.subCategoriesService.getSubcategoriesOfCategory(this.id).subscribe({
       next: (res)=> {
-        console.log(res);
         this.subCategoriesList = res.data;
       }
     })

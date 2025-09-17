@@ -1,15 +1,12 @@
 <section class="min-h-screen py-14 bg">
   <div class="container flex justify-center items-center">
     <div class="card block w-3/4 p-6 m-14 bg-white border border-gray-200 rounded-lg shadow-lg">
-      <h2 class="text-center txt-color font-bold text-3xl">Checkout</h2>
-      <p class="text-center second-txt-color">Please select your shipping address</p>
-
+      <h2 class="text-center txt-color font-bold text-3xl">Shipping Addresses</h2>
+      <p class="text-center second-txt-color">Manage your saved shipping addresses</p>
       @if (Addresses && Addresses.length > 0) {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-6">
           @for (address of Addresses; track address._id) {
-            <label
-              class="border rounded-lg shadow cursor-pointer flex items-center p-4 hover:shadow-lg transition-all duration-200 relative"
-            >
+            <label class="border rounded-lg shadow cursor-pointer flex items-center p-4 hover:shadow-lg transition-all duration-200 relative">
               <input
                 type="radio"
                 name="selectedAddress"
@@ -17,14 +14,19 @@
                 [checked]="selectedAddressId === address._id"
                 (change)="selectAddress(address._id)"
               />
+
               <div class="flex-1">
-                <h3 class="font-bold text-lg"><i class="fa-solid fa-tag txt-color"></i> {{ address.name }}</h3>
+                <h3 class="font-bold text-lg"> <i class="fa-solid fa-tag txt-color"></i> {{ address.name }}</h3>
                 <p class="text-gray-600 text-sm"><i class="fa-solid fa-map-location text-[#8B5E35]"></i> {{ address.details }}</p>
                 <p class="text-gray-600 text-sm"><i class="fas fa-phone text-[#8B5E35]"></i> {{ address.phone }}</p>
                 <p class="text-gray-600 text-sm"><i class="fas fa-city text-[#8B5E35]"></i> {{ address.city }}</p>
               </div>
-              <button type="button" (click)="removeAddress(address._id)"
-                class="absolute top-2 right-2 text-[#9B7E5C] hover:text-[#8B5E35]">
+
+              <button
+                type="button"
+                (click)="removeAddress(address._id)"
+                class="absolute top-2 right-2 text-[#9B7E5C] hover:text-[#8B5E35]"
+              >
                 <i class="fas fa-trash"></i>
               </button>
             </label>
@@ -41,19 +43,22 @@
         </div>
 
         @if (showForm) {
-          <!-- New Address Form -->
-          <form [formGroup]="shippingAddressForm" (ngSubmit)="addNewAddresses()" class="space-y-4 mt-6">
+          <form
+            [formGroup]="shippingAddressForm"
+            (ngSubmit)="addNewAddresses()"
+            class="space-y-4 mt-6"
+          >
             <app-input [control]="shippingAddressForm.get('name')" [inputType]="'text'" [inputId]="'name'"
-              [inputPlaceholder]="'Enter address name (e.g. Home, Work)'" [label]="'Name'"></app-input>
+                       [inputPlaceholder]="'Enter address name (e.g. Home, Work)'" [label]="'Name'"></app-input>
 
             <app-input [control]="shippingAddressForm.get('details')" [inputElement]="'textarea'" [inputId]="'details'"
-              [inputPlaceholder]="'Enter shipping address details...'" [label]="'Details'"></app-input>
+                       [inputPlaceholder]="'Enter shipping address details...'" [label]="'Details'"></app-input>
 
             <app-input [control]="shippingAddressForm.get('phone')" [inputType]="'tel'" [inputId]="'phone'"
-              [inputPlaceholder]="'Enter your phone number...'" [label]="'Phone Number'"></app-input>
+                       [inputPlaceholder]="'Enter your phone number...'" [label]="'Phone Number'"></app-input>
 
             <app-input [control]="shippingAddressForm.get('city')" [inputType]="'text'" [inputId]="'city'"
-              [inputPlaceholder]="'Enter your city...'" [label]="'City'"></app-input>
+                       [inputPlaceholder]="'Enter your city...'" [label]="'City'"></app-input>
 
             <button type="submit" class="btn-main-style w-full mt-4" [disabled]="shippingAddressForm.invalid">
               Save Address
@@ -62,37 +67,28 @@
         }
       }
       @else {
-        <!-- No addresses yet -->
-        <form [formGroup]="shippingAddressForm" (ngSubmit)="addNewAddresses()" class="space-y-4 mt-6">
+        <form
+          [formGroup]="shippingAddressForm"
+          (ngSubmit)="addNewAddresses()"
+          class="space-y-4 mt-6"
+        >
           <app-input [control]="shippingAddressForm.get('name')" [inputType]="'text'" [inputId]="'name'"
-            [inputPlaceholder]="'Enter address name (e.g. Home, Work)'" [label]="'Name'"></app-input>
+                     [inputPlaceholder]="'Enter address name (e.g. Home, Work)'" [label]="'Name'"></app-input>
 
           <app-input [control]="shippingAddressForm.get('details')" [inputElement]="'textarea'" [inputId]="'details'"
-            [inputPlaceholder]="'Enter shipping address details...'" [label]="'Details'"></app-input>
+                     [inputPlaceholder]="'Enter shipping address details...'" [label]="'Details'"></app-input>
 
           <app-input [control]="shippingAddressForm.get('phone')" [inputType]="'tel'" [inputId]="'phone'"
-            [inputPlaceholder]="'Enter your phone number...'" [label]="'Phone Number'"></app-input>
+                     [inputPlaceholder]="'Enter your phone number...'" [label]="'Phone Number'"></app-input>
 
           <app-input [control]="shippingAddressForm.get('city')" [inputType]="'text'" [inputId]="'city'"
-            [inputPlaceholder]="'Enter your city...'" [label]="'City'"></app-input>
+                     [inputPlaceholder]="'Enter your city...'" [label]="'City'"></app-input>
 
           <button type="submit" class="btn-main-style w-full mt-4" [disabled]="shippingAddressForm.invalid">
             Save Address
           </button>
         </form>
       }
-
-      <!-- Payment Buttons -->
-      <div class="flex justify-evenly items-center mt-8">
-        <button type="button" (click)="payByCash($event)" class="btn-alternate-style flex-3/4">
-          Pay by Cash
-          <span>@if (isLoading) { <i class="fas fa-spinner fa-spin text-gray-500"></i> }</span>
-        </button>
-        <button type="button" (click)="payByVisa($event)" class="btn-main-style flex-3/4">
-          Pay by Visa/Credit-Card
-          <span>@if (isLoading) { <i class="fas fa-spinner fa-spin text-gray-500"></i> }</span>
-        </button>
-      </div>
     </div>
   </div>
 </section>

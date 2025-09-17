@@ -55,11 +55,9 @@ export class RegisterComponent implements OnInit{
       this.isLoading = true;
       // unsubscribe
       this.subscription.unsubscribe();
-      console.log(this.registerForm.value)
       // send data to the backend
       this.authService.register(this.registerForm.value).subscribe({
         next: (res)=> {
-          console.log(res);
           if(res.message == 'success'){
             // remove loading
             this.isLoading = false;

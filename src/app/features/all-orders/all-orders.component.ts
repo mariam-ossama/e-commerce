@@ -35,7 +35,6 @@ export class AllOrdersComponent implements OnInit{
     this.isLoading = true;
     this.paymentService.getUserOrders(this.user.id).subscribe({
       next: (res)=> {
-        console.log(res);
         this.ordersList = res;
         this.isLoading = false;
       }

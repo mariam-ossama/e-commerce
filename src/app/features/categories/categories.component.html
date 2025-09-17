@@ -4,7 +4,7 @@
         <app-search-bar [placeholder]="'Categories'" (search)="onSearchChanged($event)"></app-search-bar>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 py-3">
             @for (category of categories| search: 'categories' :searchKeyword; track category._id) {
-            <div class="product-item second-txt-color overflow-hidden group/card">
+            <div class="category-item second-txt-color overflow-hidden transform transition-transform duration-300 ease-in-out hover:scale-105">
                 <div class="max-w-full bg-white border border-[#8B5E35] rounded-lg shadow-md cursor-pointer relative" [routerLink]="['/sub-categories', category._id, category.name]">
                     <a>
                         <img class="p-2 rounded-lg object-cover w-full block h-[350px]" [src]="category.image" [alt]="category.name"/>

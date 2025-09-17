@@ -52,7 +52,6 @@ export class LoginComponent {
       // send data to the backend
       this.authService.login(this.loginForm.value).subscribe({
         next: (res)=> {
-          console.log(res);
           if(res.message == 'success'){
             // remove loading
             this.isLoading = false;

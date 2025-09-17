@@ -12,10 +12,11 @@ import { Router } from '@angular/router';
 import { FlowbiteService } from '../../core/services/flowbite.service';
 import { initFlowbite } from 'flowbite';
 import { Subscription } from 'rxjs';
+import { ShippingAddressesComponent } from "../../shared/components/shipping-addresses/shipping-addresses.component";
 
 @Component({
   selector: 'app-profile',
-  imports: [InputComponent, ReactiveFormsModule, AllOrdersComponent],
+  imports: [InputComponent, ReactiveFormsModule, AllOrdersComponent, ShippingAddressesComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -72,7 +73,6 @@ export class ProfileComponent implements OnInit{
   getAllUserOrders():void {
     this.paymentService.getUserOrders(this.userData.id).subscribe({
       next: (res)=> {
-        console.log(res);
         this.ordersList = res;
       }
     })

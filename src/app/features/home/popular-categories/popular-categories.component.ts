@@ -50,7 +50,6 @@ export class PopularCategoriesComponent {
   getAllCategoriesData():void {
     this.categoriesService.getAllCategories().subscribe({
       next: (res)=> {
-        //console.log(res);
         this.categoriesList = res.data;
       },
       error: (err)=>{

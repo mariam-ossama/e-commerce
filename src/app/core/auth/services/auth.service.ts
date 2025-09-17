@@ -56,8 +56,18 @@ export class AuthService {
     data
   )
  }
-
-
-
  // User addresses
+
+ addUserAddress(data:object):Observable<any>{
+  return this.httpClient.post(environment.baseUrl+ `addresses`, data);
+ }
+ getAllUserAddresses():Observable<any>{
+  return this.httpClient.get(environment.baseUrl+ `addresses`);
+ }
+ getSpecificUserAddress(id:string):Observable<any>{
+  return this.httpClient.get(environment.baseUrl+ `addresses/${id}`);
+ }
+ deleteUserAddress(id:string):Observable<any>{
+  return this.httpClient.delete(environment.baseUrl+ `addresses/${id}`);
+ }
 }

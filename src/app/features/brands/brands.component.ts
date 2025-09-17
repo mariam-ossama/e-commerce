@@ -22,7 +22,6 @@ export class BrandsComponent implements OnInit{
   getAllBrandsData():void {
     this.brandsService.getAllBrands().subscribe({
       next: (res)=>{
-        console.log(res);
         this.brands = res.data;
       }
     })

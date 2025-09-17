@@ -34,9 +34,7 @@ export class NavbarComponent implements OnInit{
   getCartItemsCount():void {
     this.cartService.countNumber.subscribe({
       next:(res)=>{
-        console.log(res);
         this.count = res;
-        console.log(this.count);
       }
     })
   }

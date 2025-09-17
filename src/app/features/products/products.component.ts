@@ -52,7 +52,6 @@ export class ProductsComponent implements OnInit{
   getWishlistIds():void {
     this.wishlistService.getWishlist().subscribe({
     next: (res) => {
-      console.log(res)
       if (res.status === 'success') {
         this.wishlistIds = res.data.map((item: any) => item._id);
         this.wishList = res.data;
@@ -63,7 +62,6 @@ export class ProductsComponent implements OnInit{
   removeWishlistItem(pid: string): void {
   this.wishlistService.removeFromWishlist(pid).subscribe({
     next: (res) => {
-      console.log(res);
       if (res.status === 'success') {
         // show success message
         this.toastrService.success(res.message);

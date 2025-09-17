@@ -24,7 +24,6 @@ export class CartComponent implements OnInit{
     this.isLoading = true;
     this.cartService.getLoggedUserCart().subscribe({
       next: (res)=> {
-        console.log(res);
         if(res.status === 'success'){
           this.cart = res.data;
           this.cartItemsCount = res.numOfCartItems;
@@ -40,7 +39,6 @@ export class CartComponent implements OnInit{
     this.isLoading = true;
     this.cartService.updateItemQuantity(pid,count).subscribe({
       next: (res)=> {
-        console.log(res);
         if(res.status === 'success') {
           this.cart = res.data;
           this.isLoading = false;
@@ -51,7 +49,6 @@ export class CartComponent implements OnInit{
   deleteProductItem(pid:string):void {
     this.cartService.deleteCartItem(pid).subscribe({
       next: (res)=> {
-        console.log(res);
         if(res.status === 'success'){
           this.cart = res.data;
           this.cartItemsCount = res.numOfCartItems
@@ -64,7 +61,6 @@ export class CartComponent implements OnInit{
     this.isLoading = true;
     this.cartService.clearCart().subscribe({
       next: (res)=> {
-        console.log(res);
         if(res.message === 'success') {
           this.toastrService.success(res.message);
           this.isLoading = false;

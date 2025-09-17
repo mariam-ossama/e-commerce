@@ -4,7 +4,6 @@ import { IProduct } from '../../core/models/iproduct.interface';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../core/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
-import { count } from 'console';
 
 
 @Component({
@@ -35,7 +34,6 @@ export class DetailsComponent implements OnInit{
   getProductId():void{
     this.activatedRoute.paramMap.subscribe({
       next: (urlParams)=>{
-        //console.log(urlParams);
         this.id = urlParams.get('id');
         this.slug = urlParams.get('slug');
       }
@@ -45,7 +43,6 @@ export class DetailsComponent implements OnInit{
     this.isLoading = true;
     this.productDetailsService.getProductDetails(this.id).subscribe({
       next:(res)=>{
-        console.log(res.data);
         this.productDetails = res.data;
         this.selectedImage = this.productDetails.imageCover;
         this.isLoading = false;
@@ -59,7 +56,6 @@ export class DetailsComponent implements OnInit{
   addToCart(pid:string):void {
     this.cartService.addProductToCart(pid).subscribe({
       next: (res)=> {
-        console.log(res);
         if (res.status === 'success') {
         this.toastrServitce.success(res.message);
 
@@ -77,7 +73,6 @@ export class DetailsComponent implements OnInit{
     // show loading
     this.cartService.updateItemQuantity(pid,count).subscribe({
       next: (res)=> {
-        console.log(res.data);
         if (res.status === 'success') {
         const item = res.data.products.find(
           (p: any) => p.product._id === this.id
@@ -90,7 +85,6 @@ export class DetailsComponent implements OnInit{
   getCartItems():void {
     this.cartService.getLoggedUserCart().subscribe({
       next:(res)=>{
-        console.log(res);
         const item = res.data.products.find(
         (p: any) => p.product._id === this.id
       );
@@ -101,6 +95,5 @@ export class DetailsComponent implements OnInit{
   }
   changeImage(img: string): void {
     this.selectedImage = img;
-    //console.log(this.selectedImage);
   }
 }
